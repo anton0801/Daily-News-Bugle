@@ -27,6 +27,8 @@ struct WeatherResponse: Codable {
     
     struct Wind: Codable {
         var speed: Double
+        var deg: Int
+        var gust: Double?
     }
     
     struct SystemData: Codable {
@@ -57,7 +59,6 @@ class WeatherManager: ObservableObject {
                 return
             }
             
-            // Декодируем данные JSON
             do {
                 let weatherResponse = try JSONDecoder().decode(WeatherResponse.self, from: data)
                 completion(.success(weatherResponse))

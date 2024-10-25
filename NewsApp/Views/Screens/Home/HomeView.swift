@@ -6,6 +6,7 @@ struct HomeView: View {
     
     @EnvironmentObject var loadingViewModel: LoadingViewModel
     @EnvironmentObject var favorites: FavoritePostsViewModel
+    @EnvironmentObject var locationManager: LocationManager
     
     @State var loadingImage = true
     
@@ -41,43 +42,48 @@ struct HomeView: View {
                             
                             HStack {
                                 if let weatherData = loadingViewModel.weatherData {
-                                    VStack(alignment: .leading, spacing: 0) {
-                                        Text(currentDateFormatted())
-                                            .font(.custom("Inter-Regular_Medium", size: 12))
-                                            .foregroundColor(.white)
-                                            .padding(.top)
-                                        
-                                        Text("\(loadingViewModel.cityName)")
-                                            .font(.custom("Inter-Regular_Bold", size: 20))
-                                            .foregroundColor(.white)
-                                            .padding(.top)
-                                        
-                                        Text("\(weatherData.main.temp.formatDouble(0))°C")
-                                            .font(.custom("Inter-Regular_Bold", size: 32))
-                                            .foregroundColor(.white)
-                                            .padding(.top)
-                                        
-                                        Text(weatherData.weather.first?.description ?? "")
-                                            .font(.custom("Inter-Regular_Medium", size: 12))
-                                            .foregroundColor(.white)
-                                            .padding(.top)
-                                    }
-                                    .padding(.horizontal)
-                                    Spacer()
-                                    VStack {
-                                        WebImage(url: URL(string: "https://openweathermap.org/img/wn/\(weatherData.weather.first?.icon ?? "")@2x.png")) { image in
-                                            image.resizable()
-                                                .frame(height: 170)
-                                                .onAppear {
-                                                    loadingImage = false
+                                    NavigationLink(destination: WeatherView()
+                                        .environmentObject(locationManager)
+                                        .environmentObject(loadingViewModel)
+                                        .navigationBarBackButtonHidden()) {
+                                            VStack(alignment: .leading, spacing: 0) {
+                                                Text(currentDateFormatted())
+                                                    .font(.custom("Inter-Regular_Medium", size: 12))
+                                                    .foregroundColor(.white)
+                                                    .padding(.top)
+                                                
+                                                Text("\(loadingViewModel.cityName)")
+                                                    .font(.custom("Inter-Regular_Bold", size: 20))
+                                                    .foregroundColor(.white)
+                                                    .padding(.top)
+                                                
+                                                Text("\(weatherData.main.temp.formatDouble(0))°C")
+                                                    .font(.custom("Inter-Regular_Bold", size: 32))
+                                                    .foregroundColor(.white)
+                                                    .padding(.top)
+                                                
+                                                Text(weatherData.weather.first?.description ?? "")
+                                                    .font(.custom("Inter-Regular_Medium", size: 12))
+                                                    .foregroundColor(.white)
+                                                    .padding(.top)
+                                            }
+                                            .padding(.horizontal)
+                                            Spacer()
+                                            VStack {
+                                                WebImage(url: URL(string: "https://openweathermap.org/img/wn/\(weatherData.weather.first?.icon ?? "")@2x.png")) { image in
+                                                    image.resizable()
+                                                        .frame(height: 170)
+                                                        .onAppear {
+                                                            loadingImage = false
+                                                        }
+                                                } placeholder: {
+                                                    RoundedRectangle(cornerRadius: 25, style: .continuous)
+                                                        .fill(.gray)
+                                                        .frame(height: 60)
+                                                        .skeleton(with: loadingImage)
                                                 }
-                                        } placeholder: {
-                                            RoundedRectangle(cornerRadius: 25, style: .continuous)
-                                                .fill(.gray)
-                                                .frame(height: 60)
-                                                .skeleton(with: loadingImage)
+                                            }
                                         }
-                                    }
                                 } else {
                                     VStack(alignment: .leading, spacing: 0) {
                                         Text(currentDateFormatted())
@@ -219,4 +225,5 @@ struct HomeView: View {
     HomeView()
         .environmentObject(LoadingViewModel())
         .environmentObject(FavoritePostsViewModel())
+        .environmentObject(LocationManager())
 }

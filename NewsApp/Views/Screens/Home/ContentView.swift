@@ -3,6 +3,7 @@ import SwiftUI
 struct ContentView: View {
     
     @EnvironmentObject var loadingViewModel: LoadingViewModel
+    @EnvironmentObject var locationManager: LocationManager
     @State private var selectedTab = 0
     @StateObject var favorites: FavoritePostsViewModel = FavoritePostsViewModel()
     
@@ -11,6 +12,7 @@ struct ContentView: View {
             if selectedTab == 0 {
                 HomeView()
                     .environmentObject(loadingViewModel)
+                    .environmentObject(locationManager)
                     .environmentObject(favorites)
             } else if selectedTab == 1 {
                 FavoritesPostsView()
@@ -103,4 +105,5 @@ struct CentralTabButton: View {
 #Preview {
     ContentView()
         .environmentObject(LoadingViewModel())
+        .environmentObject(LocationManager())
 }

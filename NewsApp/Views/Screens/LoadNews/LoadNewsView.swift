@@ -30,6 +30,7 @@ struct LoadNewsView: View {
                 
                 NavigationLink(destination: ContentView()
                     .environmentObject(loadingViewModel)
+                    .environmentObject(locationManager)
                     .navigationBarBackButtonHidden(), isActive: $newsLoaded) {
                     
                 }

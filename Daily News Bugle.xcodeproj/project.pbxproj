@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EE5632482CCBF7E500C8273D /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5632472CCBF7E500C8273D /* WeatherView.swift */; };
 		EE7189CE2C972D230051A236 /* WeatherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7189CD2C972D230051A236 /* WeatherManager.swift */; };
 		EE7189D12C972E1F0051A236 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7189D02C972E1F0051A236 /* LocationManager.swift */; };
 		EE7189D52C9731C50051A236 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7189D42C9731C50051A236 /* Post.swift */; };
@@ -33,6 +34,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EE5632472CCBF7E500C8273D /* WeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
 		EE7189CD2C972D230051A236 /* WeatherManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherManager.swift; sourceTree = "<group>"; };
 		EE7189D02C972E1F0051A236 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		EE7189D42C9731C50051A236 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
@@ -71,6 +73,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EE5632462CCBF7CE00C8273D /* Weather */ = {
+			isa = PBXGroup;
+			children = (
+				EE5632472CCBF7E500C8273D /* WeatherView.swift */,
+			);
+			path = Weather;
+			sourceTree = "<group>";
+		};
 		EE7189CC2C972C5E0051A236 /* Weather */ = {
 			isa = PBXGroup;
 			children = (
@@ -114,6 +124,7 @@
 		EE7189DF2C97337D0051A236 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				EE5632462CCBF7CE00C8273D /* Weather */,
 				EED422D22CC97E6D000AB134 /* Settings */,
 				EED422CF2CC97CBC000AB134 /* Notifications */,
 				EED422CC2CC97012000AB134 /* Favorites */,
@@ -362,6 +373,7 @@
 				EE7189CE2C972D230051A236 /* WeatherManager.swift in Sources */,
 				EED422D42CC97E77000AB134 /* SettingsView.swift in Sources */,
 				EE7189D12C972E1F0051A236 /* LocationManager.swift in Sources */,
+				EE5632482CCBF7E500C8273D /* WeatherView.swift in Sources */,
 				EECFF9C52CC98248001C93DE /* CountriesListView.swift in Sources */,
 				EE7189E22C97339D0051A236 /* PostItemVIews.swift in Sources */,
 				EED422D12CC97CCE000AB134 /* NotificationsView.swift in Sources */,
