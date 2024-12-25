@@ -26,6 +26,7 @@ class NewsManager {
                 let postItems = postsData.map { $0.toPostItem() }
                 callback(postItems)
             } catch {
+                print("Error parse news \(error.localizedDescription)")
                 callback([])
             }
         }

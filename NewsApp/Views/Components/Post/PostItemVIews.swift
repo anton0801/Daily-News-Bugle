@@ -46,13 +46,23 @@ struct BasePostItem: View {
                 .foregroundColor(Color.init(red: 83/255, green: 82/255, blue: 82/255))
          
             HStack {
-                Image("likes")
+                if UserDefaults.standard.bool(forKey: "is_post_liked_\(post.id)") {
+                    Image("likes_active")
+                } else {
+                    Image("likes")
+                }
                 Text("\(post.likes)")
                     .font(.custom("Inter-Regular_Bold", size: 12))
                     .foregroundColor(Color.init(red: 83/255, green: 82/255, blue: 82/255))
+                 
                 
-                Image("dislikes")
-                    .padding(.leading)
+                if UserDefaults.standard.bool(forKey: "is_post_disliked_\(post.id)") {
+                    Image("dislikes_active")
+                        .padding(.leading)
+                } else {
+                    Image("dislikes")
+                        .padding(.leading)
+                }
                 Text("\(post.dislikes)")
                     .font(.custom("Inter-Regular_Bold", size: 12))
                     .foregroundColor(Color.init(red: 83/255, green: 82/255, blue: 82/255))

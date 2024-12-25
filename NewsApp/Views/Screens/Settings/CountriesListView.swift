@@ -8,17 +8,33 @@ struct CountriesListView: View {
         "Canada", "Germany", "Mexico", "France", "Russia", "Italy"
     ]
     
+    var countryCodes: [String: String] = [
+        "Canada": "ca",
+        "Germany": "de",
+        "Mexico": "mx",
+        "France": "fr",
+        "Russia": "ru",
+        "Italy": "it"
+    ]
+    
     @State var userCountry: String = ""
+    var fromInitial = false
+    var selectedCallback: () -> Void = { }
+    
+    @EnvironmentObject var locationManager: LocationManager
+    @EnvironmentObject var loadingVm: LoadingViewModel
     
     var body: some View {
         VStack {
             HStack {
-                Button {
-                    presMode.wrappedValue.dismiss()
-                } label: {
-                    Image("back")
+                if !fromInitial {
+                    Button {
+                        presMode.wrappedValue.dismiss()
+                    } label: {
+                        Image("back")
+                    }
                 }
-                Text("Settings")
+                Text("Country")
                     .font(.custom("Inter-Regular_Bold", size: 26))
                     .foregroundColor(Color.init(red: 240/255, green: 44/255, blue: 0))
                     .padding(.leading, 4)
@@ -73,14 +89,22 @@ struct CountriesListView: View {
                     .fill(.white)
             )
             .padding(.top)
+            .onChange(of: userCountry) { newValue in
+                UserDefaults.standard.set(newValue, forKey: "user_country")
+                if fromInitial {
+                    if !userCountry.isEmpty && userCountry != UserDefaults.standard.string(forKey: "user_country") {
+                        selectedCallback()
+                    }
+                }
+                loadingVm.sortPostItemsByCountry()
+            }
             
             Spacer()
         }
         .onAppear {
-            userCountry = UserDefaults.standard.string(forKey: "user_country") ?? ""
-        }
-        .onChange(of: userCountry) { newValue in
-            UserDefaults.standard.set(userCountry, forKey: "user_country")
+            if !fromInitial {
+                userCountry = UserDefaults.standard.string(forKey: "user_country") ?? ""
+            }
         }
         .background(
             Rectangle()

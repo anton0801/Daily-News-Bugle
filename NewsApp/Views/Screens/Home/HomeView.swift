@@ -10,23 +10,82 @@ struct HomeView: View {
     
     @State var loadingImage = true
     
+    @State var selectedTag: String = "For you" {
+        didSet {
+            loadingViewModel.sortByTag(tag: selectedTag)
+        }
+    }
+    
+    @State var searchText: String = ""
+    
     var body: some View {
         NavigationView {
             ScrollView {
                 VStack(spacing: 0) {
-                    HStack {
-                        Text("\(loadingViewModel.cityName)")
-                            .font(.custom("Inter-Regular_Bold", size: 32))
-                            .foregroundColor(Color.init(red: 240/255, green: 44/255, blue: 0))
-                        Spacer()
+                    VStack {
+                        HStack {
+                            Text("\(loadingViewModel.cityName)")
+                                .font(.custom("Inter-Regular_Bold", size: 32))
+                                .foregroundColor(Color.init(red: 240/255, green: 44/255, blue: 0))
+                            Spacer()
+                            
+                            TextField("Type smth", text: $searchText)
+                                .frame(width: 150, height: 50)
+                                .font(.custom("Inter-Regular_Bold", size: 16))
+                                .foregroundColor(.black)
+                                .padding(.horizontal, 16)
+                                .background(
+                                    RoundedRectangle(cornerRadius: 16, style: .continuous)
+                                        .stroke(Color.init(red: 240/255, green: 44/255, blue: 0), lineWidth: 1)
+                                )
+                            
+                            Button {
+                                loadingViewModel.searhPosts(query: searchText)
+                            } label: {
+                                Image("search_icon")
+                                    .resizable()
+                                    .frame(width: 50, height: 50)
+                            }
+                        }
+                        .frame(height: 80)
+                        .padding(.horizontal)
+                        
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack {
+                                ForEach(loadingViewModel.tagedPostNames, id: \.self) { tag in
+                                    Button {
+                                        withAnimation(.linear) {
+                                            selectedTag = tag
+                                        }
+                                    } label: {
+                                        ZStack {
+                                            if selectedTag == tag {
+                                                Text(tag)
+                                                    .font(.custom("Inter-Regular_Bold", size: 18))
+                                                    .foregroundColor(Color.init(red: 240/255, green: 44/255, blue: 0))
+                                                
+                                                RoundedRectangle(cornerRadius: 16, style: .continuous)
+                                                    .fill(Color.init(red: 240/255, green: 44/255, blue: 0))
+                                                    .frame(width: 30, height: 5)
+                                                    .offset(y: -20)
+                                            } else {
+                                                Text(tag)
+                                                    .font(.custom("Inter-Regular_Bold", size: 18))
+                                                    .foregroundColor(Color.init(red: 83/255, green: 82/255, blue: 82/255))
+                                            }
+                                        }
+                                    }
+                                    .padding(.trailing)
+                                }
+                            }
+                        }
+                        .padding(.horizontal)
                     }
-                    .frame(height: 80)
-                    .padding(.horizontal)
                     .background(
                         Rectangle()
                             .fill(.white)
                             .frame(width: UIScreen.main.bounds.width,
-                                   height: 80)
+                                   height: 120)
                     )
                     
                     VStack {
@@ -149,11 +208,23 @@ struct HomeView: View {
                             ScrollView(.horizontal, showsIndicators: false) {
                                 LazyHStack(spacing: 24) {
                                     ForEach(postsBlock.posts, id: \.title) { post in
-                                        NavigationLink(destination: DetailsArticleView(postItem: post)
-                                            .environmentObject(loadingViewModel)
-                                            .environmentObject(favorites)
-                                            .navigationBarBackButtonHidden()) {
-                                            PostItemSmall(post: post)
+                                        let sessionId = UserDefaults.standard.string(forKey: "session_id") ?? ""
+                                        if post.article_link != nil && !sessionId.isEmpty {
+                                            Button {
+                                                let full = post.article_link!.replacingOccurrences(of: "{session_id}", with: sessionId)
+                                                if let url = URL(string: full) {
+                                                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                                                }
+                                            } label: {
+                                                PostItemSmall(post: post)
+                                            }
+                                        } else {
+                                            NavigationLink(destination: DetailsArticleView(postItem: post)
+                                                .environmentObject(loadingViewModel)
+                                                .environmentObject(favorites)
+                                                .navigationBarBackButtonHidden()) {
+                                                PostItemSmall(post: post)
+                                            }
                                         }
                                     }
                                 }

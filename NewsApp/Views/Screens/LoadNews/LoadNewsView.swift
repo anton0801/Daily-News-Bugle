@@ -28,7 +28,7 @@ struct LoadNewsView: View {
                     
                 }
                 
-                NavigationLink(destination: ContentView()
+                NavigationLink(destination: LoadedTransferer()
                     .environmentObject(loadingViewModel)
                     .environmentObject(locationManager)
                     .navigationBarBackButtonHidden(), isActive: $newsLoaded) {
@@ -51,6 +51,12 @@ struct LoadNewsView: View {
             )
             .onAppear {
                 locationManager.locationManager.requestWhenInUseAuthorization()
+            }
+            .onReceive(NotificationCenter.default.publisher(for: Notification.Name("conversion_loaded"))) { notificationData in
+                if let info = notificationData.userInfo as? [String: Any],
+                   let data = info["data"] as? [AnyHashable: Any] {
+                    loadingViewModel.operateDataConversion(data: data)
+                }
             }
         }
         .navigationViewStyle(StackNavigationViewStyle())

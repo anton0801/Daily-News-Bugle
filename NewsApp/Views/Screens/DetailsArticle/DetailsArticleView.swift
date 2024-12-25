@@ -8,6 +8,9 @@ struct DetailsArticleView: View {
     @EnvironmentObject var loadingViewModel: LoadingViewModel
     @EnvironmentObject var favorites: FavoritePostsViewModel
     
+    @State var likes = 0
+    @State var dislikes = 0
+    
     var body: some View {
         NavigationView {
             ScrollView {
@@ -51,8 +54,8 @@ struct DetailsArticleView: View {
                                             .environmentObject(loadingViewModel)
                                             .environmentObject(favorites)
                                             .navigationBarBackButtonHidden()) {
-                                            PostItemSmall(post: post)
-                                        }
+                                                PostItemSmall(post: post)
+                                            }
                                     }
                                 }
                             }
@@ -124,33 +127,48 @@ struct DetailsArticleView: View {
                                 .font(.custom("Inter-Regular_Medium", size: 14))
                                 .foregroundColor(.black)
                                 .padding(.top)
-                            
-//                            if paragraphIndex % 2 == 0 {
-//                                if postItem.images.count > paragraphIndex / 2 {
-//                                    WebImage(url: URL(string: postItem.images[paragraphIndex / 2])) { image in
-//                                        image.resizable()
-//                                            .frame(height: 250)
-//                                            .cornerRadius(12)
-//                                    } placeholder: {
-//                                        RoundedRectangle(cornerRadius: 8, style: .continuous)
-//                                            .fill(.gray.opacity(0.4))
-//                                            .frame(height: 250)
-//                                    }
-//                                }
-//                            }
                         }
                         
                         HStack {
-                            Image("likes")
-                            Text("\(postItem.likes)")
-                                .font(.custom("Inter-Regular_Bold", size: 12))
-                                .foregroundColor(Color.init(red: 83/255, green: 82/255, blue: 82/255))
+                            Button {
+                                UserDefaults.standard.set(true, forKey: "is_post_liked_\(postItem.id)")
+                                UserDefaults.standard.set(false, forKey: "is_post_disliked_\(postItem.id)")
+                                withAnimation(.linear) {
+                                    if dislikes > postItem.dislikes {
+                                        dislikes -= 1
+                                    }
+                                    likes += 1
+                                }
+                            } label: {
+                                if likes > postItem.likes || UserDefaults.standard.bool(forKey: "is_post_liked_\(postItem.id)") {
+                                    Image("likes_active")
+                                } else {
+                                    Image("likes")
+                                }
+                                Text("\(likes)")
+                                    .font(.custom("Inter-Regular_Bold", size: 12))
+                                    .foregroundColor(Color.init(red: 83/255, green: 82/255, blue: 82/255))
+                            }
                             
-                            Image("dislikes")
-                                .padding(.leading)
-                            Text("\(postItem.dislikes)")
-                                .font(.custom("Inter-Regular_Bold", size: 12))
-                                .foregroundColor(Color.init(red: 83/255, green: 82/255, blue: 82/255))
+                            Button {
+                                UserDefaults.standard.set(false, forKey: "is_post_liked_\(postItem.id)")
+                                UserDefaults.standard.set(true, forKey: "is_post_disliked_\(postItem.id)")
+                                withAnimation(.linear) {
+                                    if likes > postItem.likes {
+                                        likes -= 1
+                                    }
+                                    dislikes += 1
+                                }
+                            } label: {
+                                if likes > postItem.likes || UserDefaults.standard.bool(forKey: "is_post_disliked_\(postItem.id)") {
+                                    Image("dislikes_active")
+                                } else {
+                                    Image("dislikes")
+                                }
+                                Text("\(postItem.dislikes)")
+                                    .font(.custom("Inter-Regular_Bold", size: 12))
+                                    .foregroundColor(Color.init(red: 83/255, green: 82/255, blue: 82/255))
+                            }
                             Spacer()
                             
                             Button {
@@ -197,8 +215,8 @@ struct DetailsArticleView: View {
                                         .environmentObject(loadingViewModel)
                                         .environmentObject(favorites)
                                         .navigationBarBackButtonHidden()) {
-                                        PostItemSmall2(post: post)
-                                    }
+                                            PostItemSmall2(post: post)
+                                        }
                                 }
                             }
                         }
@@ -219,6 +237,10 @@ struct DetailsArticleView: View {
                            minHeight: UIScreen.main.bounds.height)
                     .ignoresSafeArea()
             )
+            .onAppear {
+                likes = postItem.likes
+                dislikes = postItem.likes
+            }
         }
         .navigationViewStyle(StackNavigationViewStyle())
     }

@@ -62,7 +62,6 @@ class WeatherManager: ObservableObject {
             do {
                 let weatherResponse = try JSONDecoder().decode(WeatherResponse.self, from: data)
                 completion(.success(weatherResponse))
-                UserDefaults.standard.set(weatherResponse.sys.country, forKey: "user_country")
             } catch {
                 completion(.failure(error))
             }

@@ -8,11 +8,15 @@ func generateRandomDateInPast5Days() -> Date {
 }
 
 struct PostResponse: Codable {
+    var id: Int
     var title: String
     var images: String
     var text: String
     var category: String
     var tags: String
+    var article_link: String?
+    var lang: String?
+    var country: String?
 }
 
 extension PostResponse {
@@ -27,11 +31,12 @@ extension PostResponse {
             } catch {
             }
         }
-        return Post(images: postImages, title: title, desc: text, likes: Int.random(in: 0...150), dislikes: Int.random(in: 0...25), time: Int(generateRandomDateInPast5Days().timeIntervalSince1970), tags: postTags)
+        return Post(id: id, images: postImages, title: title, desc: text, likes: Int.random(in: 0...150), dislikes: Int.random(in: 0...25), time: Int(generateRandomDateInPast5Days().timeIntervalSince1970), tags: postTags, article_link: article_link, lang: lang ?? "", country: country ?? "")
     }
 }
 
 struct Post: Equatable {
+    var id: Int
     var images: [String]
     var title: String
     var desc: String
@@ -39,6 +44,9 @@ struct Post: Equatable {
     var dislikes: Int
     var time: Int
     var tags: [String]
+    var article_link: String?
+    var lang: String
+    var country: String
     
     static func == (lhs: Post, rhs: Post) -> Bool {
         return lhs.title == rhs.title

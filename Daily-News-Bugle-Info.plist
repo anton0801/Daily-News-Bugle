@@ -6,16 +6,16 @@
 	<array>
 		<string>Inter.ttf</string>
 	</array>
-    
-    <key>NSAppTransportSecurity</key>
-    <dict>
-        <key>NSAllowsArbitraryLoads</key>
-        <true/>
-    </dict>
-    
-    <key>NSLocationWhenInUseUsageDescription</key>
-    <string>We need your location to show relevant information, like weather in your city.</string>
-    <key>NSLocationAlwaysUsageDescription</key>
-    <string>We need your location for better service, like weather in your city.</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>We need your location to show relevant information, like weather in your city.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>We need your location for better service, like weather in your city.</string>
+	<key>NSUserTrackingUsageDescription</key>
+	<string>This app uses your data to provide personalized advertising experiences and to improve our services. Your privacy is important to us, and we ensure your data is handled securely and in compliance with privacy regulations.</string>
 </dict>
 </plist>

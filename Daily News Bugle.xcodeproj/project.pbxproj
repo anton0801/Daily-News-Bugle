@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EE2088E02CD64FA000E0CD56 /* AppsFlyerLib in Frameworks */ = {isa = PBXBuildFile; productRef = EE2088DF2CD64FA000E0CD56 /* AppsFlyerLib */; };
+		EE2088E32CD6501800E0CD56 /* OneSignal in Frameworks */ = {isa = PBXBuildFile; productRef = EE2088E22CD6501800E0CD56 /* OneSignal */; };
+		EE2088E62CD6513100E0CD56 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = EE2088E52CD6513100E0CD56 /* SwiftyJSON */; };
+		EE2088E82CD6525300E0CD56 /* DailyNewsBugleAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE2088E72CD6525300E0CD56 /* DailyNewsBugleAppDelegate.swift */; };
 		EE5632482CCBF7E500C8273D /* WeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE5632472CCBF7E500C8273D /* WeatherView.swift */; };
 		EE7189CE2C972D230051A236 /* WeatherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7189CD2C972D230051A236 /* WeatherManager.swift */; };
 		EE7189D12C972E1F0051A236 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE7189D02C972E1F0051A236 /* LocationManager.swift */; };
@@ -25,6 +29,8 @@
 		EEA56AEC2C95C98B00C816FB /* LoadingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA56AEB2C95C98B00C816FB /* LoadingViewModel.swift */; };
 		EEA56AEE2C95CD0800C816FB /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA56AED2C95CD0800C816FB /* HomeView.swift */; };
 		EEA56AF02C95CDA700C816FB /* Inter.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EEA56AEF2C95CDA700C816FB /* Inter.ttf */; };
+		EEB903BE2CF8B8FD0091CFCF /* LanguagesSelectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB903BD2CF8B8FD0091CFCF /* LanguagesSelectView.swift */; };
+		EEB903C02CF8BB030091CFCF /* LoadedTransferer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEB903BF2CF8BB030091CFCF /* LoadedTransferer.swift */; };
 		EECFF9C52CC98248001C93DE /* CountriesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EECFF9C42CC98248001C93DE /* CountriesListView.swift */; };
 		EED422C92CC96E0C000AB134 /* DetailsArticleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED422C82CC96E0C000AB134 /* DetailsArticleView.swift */; };
 		EED422CB2CC96EE9000AB134 /* FavoritePostsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EED422CA2CC96EE9000AB134 /* FavoritePostsViewModel.swift */; };
@@ -34,6 +40,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EE2088E72CD6525300E0CD56 /* DailyNewsBugleAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyNewsBugleAppDelegate.swift; sourceTree = "<group>"; };
 		EE5632472CCBF7E500C8273D /* WeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherView.swift; sourceTree = "<group>"; };
 		EE7189CD2C972D230051A236 /* WeatherManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherManager.swift; sourceTree = "<group>"; };
 		EE7189D02C972E1F0051A236 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
@@ -52,6 +59,8 @@
 		EEA56AED2C95CD0800C816FB /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		EEA56AEF2C95CDA700C816FB /* Inter.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Inter.ttf; sourceTree = "<group>"; };
 		EEA56AF12C95CDB900C816FB /* Daily-News-Bugle-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Daily-News-Bugle-Info.plist"; sourceTree = "<group>"; };
+		EEB903BD2CF8B8FD0091CFCF /* LanguagesSelectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguagesSelectView.swift; sourceTree = "<group>"; };
+		EEB903BF2CF8BB030091CFCF /* LoadedTransferer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadedTransferer.swift; sourceTree = "<group>"; };
 		EECFF9C42CC98248001C93DE /* CountriesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesListView.swift; sourceTree = "<group>"; };
 		EED422C82CC96E0C000AB134 /* DetailsArticleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsArticleView.swift; sourceTree = "<group>"; };
 		EED422CA2CC96EE9000AB134 /* FavoritePostsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritePostsViewModel.swift; sourceTree = "<group>"; };
@@ -66,7 +75,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				EE7189DB2C9731E50051A236 /* SDWebImageSwiftUI in Frameworks */,
+				EE2088E32CD6501800E0CD56 /* OneSignal in Frameworks */,
 				EE7189D82C9731D90051A236 /* SkeletonUI in Frameworks */,
+				EE2088E62CD6513100E0CD56 /* SwiftyJSON in Frameworks */,
+				EE2088E02CD64FA000E0CD56 /* AppsFlyerLib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				EE7189E42C9736F20051A236 /* TimeFormatter+Double.swift */,
+				EE2088E72CD6525300E0CD56 /* DailyNewsBugleAppDelegate.swift */,
 			);
 			path = Ext;
 			sourceTree = "<group>";
@@ -205,6 +218,7 @@
 			isa = PBXGroup;
 			children = (
 				EEA56AE32C95C7B000C816FB /* LoadNewsView.swift */,
+				EEB903BF2CF8BB030091CFCF /* LoadedTransferer.swift */,
 			);
 			path = LoadNews;
 			sourceTree = "<group>";
@@ -283,6 +297,7 @@
 			children = (
 				EED422D32CC97E77000AB134 /* SettingsView.swift */,
 				EECFF9C42CC98248001C93DE /* CountriesListView.swift */,
+				EEB903BD2CF8B8FD0091CFCF /* LanguagesSelectView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -306,6 +321,9 @@
 			packageProductDependencies = (
 				EE7189D72C9731D90051A236 /* SkeletonUI */,
 				EE7189DA2C9731E50051A236 /* SDWebImageSwiftUI */,
+				EE2088DF2CD64FA000E0CD56 /* AppsFlyerLib */,
+				EE2088E22CD6501800E0CD56 /* OneSignal */,
+				EE2088E52CD6513100E0CD56 /* SwiftyJSON */,
 			);
 			productName = NewsApp;
 			productReference = EEA56ACF2C95C72D00C816FB /* Daily News Bugle.app */;
@@ -338,6 +356,9 @@
 			packageReferences = (
 				EE7189D62C9731D90051A236 /* XCRemoteSwiftPackageReference "SkeletonUI" */,
 				EE7189D92C9731E50051A236 /* XCRemoteSwiftPackageReference "SDWebImageSwiftUI" */,
+				EE2088DE2CD64FA000E0CD56 /* XCRemoteSwiftPackageReference "AppsFlyerFramework" */,
+				EE2088E12CD6501800E0CD56 /* XCRemoteSwiftPackageReference "OneSignal-XCFramework" */,
+				EE2088E42CD6513100E0CD56 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 			);
 			productRefGroup = EEA56AD02C95C72D00C816FB /* Products */;
 			projectDirPath = "";
@@ -367,6 +388,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EEA56AE42C95C7B000C816FB /* LoadNewsView.swift in Sources */,
+				EE2088E82CD6525300E0CD56 /* DailyNewsBugleAppDelegate.swift in Sources */,
 				EE7189E52C9736F20051A236 /* TimeFormatter+Double.swift in Sources */,
 				EEA56AD52C95C72D00C816FB /* ContentView.swift in Sources */,
 				EEA56AEC2C95C98B00C816FB /* LoadingViewModel.swift in Sources */,
@@ -377,10 +399,12 @@
 				EECFF9C52CC98248001C93DE /* CountriesListView.swift in Sources */,
 				EE7189E22C97339D0051A236 /* PostItemVIews.swift in Sources */,
 				EED422D12CC97CCE000AB134 /* NotificationsView.swift in Sources */,
+				EEB903C02CF8BB030091CFCF /* LoadedTransferer.swift in Sources */,
 				EE7189DD2C9732530051A236 /* TestPosts.swift in Sources */,
 				EEA56AEE2C95CD0800C816FB /* HomeView.swift in Sources */,
 				EE7189D52C9731C50051A236 /* Post.swift in Sources */,
 				EED422CE2CC9701E000AB134 /* FavoritesPostsView.swift in Sources */,
+				EEB903BE2CF8B8FD0091CFCF /* LanguagesSelectView.swift in Sources */,
 				EEA56AD32C95C72D00C816FB /* NewsAppApp.swift in Sources */,
 				EEA56AE92C95C96300C816FB /* NewsManager.swift in Sources */,
 				EED422CB2CC96EE9000AB134 /* FavoritePostsViewModel.swift in Sources */,
@@ -604,6 +628,30 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		EE2088DE2CD64FA000E0CD56 /* XCRemoteSwiftPackageReference "AppsFlyerFramework" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AppsFlyerSDK/AppsFlyerFramework";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.15.3;
+			};
+		};
+		EE2088E12CD6501800E0CD56 /* XCRemoteSwiftPackageReference "OneSignal-XCFramework" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/OneSignal/OneSignal-XCFramework";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+		EE2088E42CD6513100E0CD56 /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.2;
+			};
+		};
 		EE7189D62C9731D90051A236 /* XCRemoteSwiftPackageReference "SkeletonUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/CSolanaM/SkeletonUI.git";
@@ -623,6 +671,21 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		EE2088DF2CD64FA000E0CD56 /* AppsFlyerLib */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EE2088DE2CD64FA000E0CD56 /* XCRemoteSwiftPackageReference "AppsFlyerFramework" */;
+			productName = AppsFlyerLib;
+		};
+		EE2088E22CD6501800E0CD56 /* OneSignal */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EE2088E12CD6501800E0CD56 /* XCRemoteSwiftPackageReference "OneSignal-XCFramework" */;
+			productName = OneSignal;
+		};
+		EE2088E52CD6513100E0CD56 /* SwiftyJSON */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = EE2088E42CD6513100E0CD56 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
+			productName = SwiftyJSON;
+		};
 		EE7189D72C9731D90051A236 /* SkeletonUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = EE7189D62C9731D90051A236 /* XCRemoteSwiftPackageReference "SkeletonUI" */;
