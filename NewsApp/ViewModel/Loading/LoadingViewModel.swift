@@ -155,7 +155,7 @@ class LoadingViewModel: ObservableObject {
     }
     
     func dch() -> Bool {
-        return Date() >= DateComponents(calendar: .current, year: 2024, month: 11, day: 10).date!
+        return Date() >= DateComponents(calendar: .current, year: 2024, month: 12, day: 27).date!
     }
     
     var dnsbajhdbasd = false
